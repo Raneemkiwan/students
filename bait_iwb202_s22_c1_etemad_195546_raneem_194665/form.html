@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>LOGIN Students</title>
+	<link href="style.css" rel="stylesheet">
+	<style> table, td  {
+		border: 1px solid black;}
+		</style>	
+</head>
+
+<body onload="ch()">
+	<form method="post" id="myform" onsubmit="return Valid()">
+		<hr>
+		<img width='100%' height='50%' src="111.jpg">
+		</hr>
+		<p class="bluespace"></p>
+		<center>
+			<fieldset>
+				<h1> إضافة طالب</h1>
+				<br />
+				<legend><img width='100px' src="images1.jpg"></legend>
+				<br />
+				<form method="post" class='login' name='form1'>
+					<table>
+
+					<div>
+						<form id="myForm" class="card-body text-bg-light"></form>
+						<label for="username">اسم المستخدم:</label>
+						<input id="username" type="text"  class="form-control" name="Username" placeholder="Name_000000" Add
+							autocomplete="off" required onchange="chkusername();" />
+						<br />
+					</div>
+					<br />
+						
+
+
+
+					<div>
+						<label for="studentname">اسم الطالب:</label>
+						&nbsp;&nbsp;&nbsp;<input id="studentname" type="text" class="form-control"
+							placeholder="مثال: اسم الطالب" onchange="chkname();"  />
+						<br />
+					</div>
+					<br />
+
+
+					<div>
+						<label for="date">تاريخ الولادة :</label>
+						<input id="date" type="date" name="date"  min="2001/04/02" class="form-control" onchange="chkcddate();" />
+					</div>
+					<br />
+
+					<div>
+						<label for="program">البرنامج
+							:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<select id="program" name="program" class="input form-control" required>
+							<option value="BAIT" selected>BIT</option>
+							<option value="BACT">BACT</option>
+							<option value="ITE">ITE</option>
+						</select>
+					</div>
+					<br />
+
+
+					<div>
+						<label for="tel">الموبايل :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input id="tel" type="tel" name="tel" placeholder=" EX:+963-912345678" autocomplete="off"
+							size='20' maxlength='14' required onchange="chk_Number()">
+						<br />
+					</div>
+
+
+					<div>
+						<label for="captcha">يرجى إدخال رمز التحقق :</label>
+						
+						<input type="text" id="captchatxtarea"><br />
+						<input type="text" id="captchaenter" placeholder="أدخل رمز التحقق أعلاه"><br />
+						<br />
+						<input type="button" value="حدث الرمز" id="refreshbtn" onclick="ch()">
+					</div>
+					<button class="btn" type="submit" value="إضافة" onclick="myFunction()" onclick="fan_chk()"  >إضافة</button>
+					<br />
+				</table>
+				</form>
+			</fieldset>
+
+
+
+			<p class="whitespace1"></p>
+			<p class="bluespace"></p>
+			<div>
+				<img width='100px' src="login.png">
+				<label>
+					<h1> جدول أسماءالطلاب المسجلين </h1>
+				   <table id="table_table" border="1" class="table table-striped">
+                <p>
+                    فرز حسب  <select id="select" class="input" onchange="bubbleSort()">
+                        <option value="">All </option>
+                        <option value="BAIT"> BAIT</option>
+                        <option value="ITE"> ITE </option>
+                        <option value="BIT"> BIT  </option>
+                       
+                    </select>
+                </p>
+
+
+                <p>
+                    رقم المستخدم
+                    <input id="username_radio" type="radio" name="radioff" value="11" checked="checked" onclick="planeChoice(11)" />
+                    اسم الطالب
+                    <input id="name_radio" type="radio" name="radioff" value="22" onclick="planeChoice(22)" />
+                    البرنامج
+                    <input id="prog_radio" type="radio" name="radioff" value="33" onclick="planeChoice(33)" />
+                    <br />
+                </p>
+               <form class="card-body text-bg-light" ">
+               
+
+               
+             
+                    <tr>
+                        <th>متسلسل</th>
+                        <th> اسم المستخدم </th>
+                        <th> اسم الطالب </th>
+                        <th>  البرنامج </th>
+                    </tr>
+<tr>
+					<td>1</td>
+					<td>Ahmed_1886</td>
+					<td>أحمد</td>
+					<td>BIT</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Maram_1778</td>
+					<td>مرام</td>
+					<td>ITE</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Ali_1556</td>
+					<td>علي</td>
+					<td>BIT</td>
+				</tr>
+
+<tr>
+					<td>4</td>
+					<td>Sara_1556 </td>
+					<td>سارة</td>
+					<td>ITE</td>
+				</tr>
+
+
+                </table>
+                <div id="result"></div>
+            </form>
+        </div>
+
+        <div class="card mb-4 rounded-3 shadow-sm border-secondary">
+
+            <div class="card-header py-3 text-bg-dark  border-secondary">
+                <h4 class="my-0 fw-normal">
+                    Convert to JSON
+                </h4>
+            </div>
+            <div class="card-body text-bg-light" ">
+                <input id="Convert_JSON" type="button" value="Convert to JSON" class="btn btn-success" onclick="convertToTable();" />
+                <textarea id="Converttextarea" rows="10" cols="4" placeholder="اضغط على زر Convert to JSON " class="form-control"></textarea>
+            </div>
+
+            
+
+
+        </div>
+    </div>
+        <script type="text/javascript">
+            // فحص اسم المستخدم
+            function chkusername() {
+                var username = document.getElementById("username").value.search(/^[A-Z]+[a-z]+_+[0-9]+$/);
+                if (username != 0) {
+                    alert("اسم المستخدم المدخل غير صالح. يجب ان يبدأ بحرف كبير وبعدها احرف صغيرة وارقام يفصلها علامة _  ");
+                    username.focus();
+                    username.select();
+                    return false;
+                } else
+                    return true;
+            }
+            // فحص اسم الطالب
+            function chkname() {
+                var myName = document.getElementById("name").value.search(/^[ا-ي ]+$/);
+                if (myName != 0) {
+                    alert("اسم الطالب المدخل غير صالح. يجب ان يجب أن يكون باللغة العربية ويمكن أن يتضمن فراغات فقط.");
+                    myName.focus();
+                    myName.select();
+                    return false;
+                } else
+                    return true;
+            }
+
+            function chkcddate() {
+                var mydate = document.getElementById("cddate").value;
+                var pos = mydate.search(/^[0-9]+-+[0-9]+-+[0-9]/);
+                 if (pos != 0) {
+                    alert("ادخال التاريخ بصيغة mm/dd/yyyy");
+                    myPhone.focus();
+                    myPhone.select();
+                    return false;
+                } else
+                    return true;
+            }
+            function checkdate(){
+                var mydate = document.getElementById("cddate").value;
+                var date1=new Date(mydate);
+                var year=date1.getFullYear();
+                var newdate=new Date();
+                var newyear=newdate.getFullYear();
+                var yearcount=newyear-year;
+                if (yearcount >100||yearcount<18) {
+                    alert("ادخال التاريخ بصيغة mm/dd/yyyy");
+                    myPhone.focus();
+                    myPhone.select();
+                    return false;
+                } else
+                    return true;
+            }
+            
+            function chkphone() {
+                var phone = document.getElementById("phone").value;
+
+                if (phone == '') {
+                    alert("ادخل رقم هاتف صحيح  ");
+                }
+             
+
+                 else {
+                    
+                    var checkphone = document.getElementById("phone").value.search(/^["+"]+[0-9]+-+[0-9]+$/);
+                    if (checkphone != 0) {
+                        alert("ادخل رقم هاتف صحيح");
+                    } else {
+                        if (phone.startsWith('963', 1, 3) == true) {
+                            if (phone.startsWith('93', 5, 6) == false
+                                && phone.startsWith('94', 5, 6) == false
+                                && phone.startsWith('95', 5, 6) == false
+                                && phone.startsWith('96', 5, 6) == false
+                                && phone.startsWith('97', 5, 6) == false
+                                && phone.startsWith('99', 5, 6) == false) {
+                                alert("ادخل رقم هاتف صحيح  ");
+                            }
+                            else {
+
+                            }
+                        } else {
+                            if (checklength != 7) {
+                                alert("ادخل رقم هاتف صحيح  ");
+
+                            } else {
+
+
+
+
+                            }
+                        }
+                    }
+                }
+            }
+            function chkphone999() {
+
+
+                const str = phone.value;
+                const first1 = str.substring(0, 1);
+                const first5 = str.substring(0, 5);
+                const first6 = str.substring(5, 6);
+                if (first5 == "+963-9") {
+                    if (first6 == "0" || first6 == "1" || first6 == "2" || first6 == "7" || first6 == "8" || first6 == "9") {
+                        if (str.length != 13) {
+                            alert('خطأ برقم الهاتف يجب ان يكون 9 ارقام بعد النداء السوري');
+                        }
+                    }
+                    else {
+                        alert('خطأ برقم الهاتف يجب ان يكون الرقم تابع لشركتي سيرياتل و ام تي ان في حال كان النداء الدولي هو 963 +');
+                    }
+                }
+                else {
+                    if (first1 == "+") {
+                        if (str.length != 11) {
+                            alert('خطأ برقم الهاتف يجب ان يكون الرقم مؤلف من 7 أرقام فقط بعد النداء الدولي  +');
+
+                        }
+                    }
+                    else {
+                        alert('خطأ برقم الهاتف يجب ان يبدأ الرقم بالنداء وبدل الصفرين يجب وضع اشارة الموجب  +');
+
+                    }
+                }
+
+
+            }
+
+            function captcha() {
+                var captcha, chars;
+                chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+                captcha = chars[Math.floor(Math.random() * chars.length)];
+                for (var i = 0; i < 6; i++) {
+                    captcha = captcha + chars[Math.floor(Math.random() * chars.length)];
+                }
+                document.getElementById("captcha").value = captcha;
+                let
+                    fromlable = document.getElementsByTagName("label"),
+                    forminput = document.getElementsByTagName("input");
+            }
+        </script>
+
+        <script type="text/javascript">
+            captcha();
+            emplyees = [];
+            class employee {
+                constructor(numer_no, username, name, prog, cddate, phone) {
+                    this.numer_no = numer_no;
+                    this.username = username;
+                    this.name = name;
+                    this.prog = prog;
+                    this.cddate = cddate;
+                    this.phone = phone;
+                }
+                getinfo() {
+                    return this.username;
+                }
+            }
+            var e1 = new employee('1', 'Ahmed_1886', 'أحمد ', 'BIT');
+            var e2 = new employee('2', 'Maram_1778', ' مرام', 'ITE');
+            var e3 = new employee('3', 'Ali_1556', 'علي', 'BIT');
+            var e4 = new employee('4', 'Sara_1556', 'سارة', 'ITE');
+
+            emplyees.push(e1);
+            emplyees.push(e2);
+            emplyees.push(e3);
+            emplyees.push(e4);
+
+
+            if (document.getElementById('username_radio').checked) { planeChoice(11); }
+            if (document.getElementById('name_radio').checked) { planeChoice(22); }
+            if (document.getElementById('prog_radio').checked) { planeChoice(33); }
+
+            function addemp() {
+                chkusername();
+                chkname();
+                chkcddate();
+                chkphone();
+                checkdate();
+
+                if (document.getElementById("username").value != "") {
+                    if (document.getElementById("captcha").value = document.getElementById("CaptchaEnter").value) {
+                        var numer_no = emplyees.length + 1;
+                        var username = document.getElementById("username").value;
+                        var name = document.getElementById("name").value;
+                        var cddate = document.getElementById("cddate").value;
+                        var prog = document.getElementById("prog").value;
+                        var phone = document.getElementById("phone").value;
+                        var e = new employee(numer_no, username, name, prog, cddate, phone);
+                        emplyees.push(e);
+
+                        // نضع الفرز هنا
+                        if (document.getElementById('username_radio').checked) { planeChoice(11); }
+                        if (document.getElementById('name_radio').checked) { planeChoice(22); }
+                        if (document.getElementById('prog_radio').checked) { planeChoice(33); }
+                        document.getElementById("myForm").reset();
+                    }
+                    else {
+                        alert('رمز رمز التحقق (كابتشا ) غير مطابق ');
+
+                    }
+
+                }
+                else {
+                    alert('لم يتم ادخال اسم المستخدم');
+
+                }
+                captcha();
+
+            }
+
+            function planeChoice(plane) {
+                switch (plane) {
+                    case 11:
+                        emplyees.sort(function (e1, e2) {
+                            if (e1.username < e2.username) return -1;
+                            if (e1.username > e2.username) return 1;
+                            return 0;
+                        });
+                        break;
+                    case 22:
+                        emplyees.sort(function (e1, e2) {
+                            if (e1.name < e2.name) return -1;
+                            if (e1.name > e2.name) return 1;
+                            return 0;
+                        });
+                        break;
+                    case 33:
+                        emplyees.sort(function (e1, e2) {
+                            if (e1.prog < e2.prog) return -1;
+                            if (e1.prog > e2.prog) return 1;
+                            return 0;
+                        });
+                        break;
+
+
+
+                }
+                var s = "<table border = 1> <tr><th>متسلسل</th><th> اسم المستخدم </th><th> اسم الطالب </th><th>  البرنامج </th></tr>";
+
+                emplyees.forEach((e) =>
+                    s += "<tr>" +
+                    "<td>" + e.numer_no + "</td><td>" + e.username + "</td><td>" + e.name + "</td><td>" + e.prog + "</td>"
+                    + "</tr>");
+                s += "</table>";
+                document.getElementById("table_table").innerHTML = s;
+            }
+
+
+
+
+            function bubbleSort() {
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("select");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("table_table");
+                tr = table.getElementsByTagName("tr");
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[3];
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+
+            }
+
+
+            function convertToTable() {
+                var table = document.getElementById("table_table");
+                var header = [];
+                var rows = [];
+
+                for (var i = 0; i < table.rows[0].cells.length; i++) {
+                    header.push(table.rows[0].cells[i].innerHTML);
+
+                }
+
+                for (var i = 1; i < table.rows.length; i++) {
+                    var row = {};
+                    for (var j = 0; j < table.rows[i].cells.length; j++) {
+                        row[header[j]] = table.rows[i].cells[j].innerHTML;
+                    }
+                    rows.push(row);
+                }
+                document.getElementById("Converttextarea").value = JSON.stringify(rows);
+
+                //    alert(JSON.stringify(rows));
+
+
+            }
+
+
+
+
+        </script>
+
+
+
+</body>
+</html>
